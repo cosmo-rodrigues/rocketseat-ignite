@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Text,
   View,
+  FlatList,
   Platform,
   TextInput,
   StyleSheet,
@@ -33,11 +34,11 @@ export function Home() {
         My Skill
       </Text>
 
-      {
-        mySkills.map((skill, index) => 
-          <SkillCard key={index} skill={skill}/>
-        )
-      }
+      <FlatList
+        data={mySkills}
+        keyExtractor={item => item}
+        renderItem={({ item }) => <SkillCard skill={item}/>}
+      />
     </View>
   );
 }
